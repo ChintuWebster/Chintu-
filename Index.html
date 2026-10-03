@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SAI BHUVAN | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #050505;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVBAR ===== */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5,5,5,0.75);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .logo span {
+            color: #8b5cf6;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: white;
+        }
+
+        /* ===== HERO ===== */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: #7c3aed;
+            filter: blur(180px);
+            opacity: 0.25;
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hello {
+            color: #a78bfa;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        h1 {
+            font-size: clamp(55px, 10vw, 120px);
+            line-height: 0.9;
+            letter-spacing: -5px;
+        }
+
+        h1 span {
+            background: linear-gradient(90deg,#8b5cf6,#ec4899);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            margin: 30px auto;
+            max-width: 650px;
+            color: #aaa;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .primary {
+            background: white;
+            color: black;
+        }
+
+        .secondary {
+            border: 1px solid #444;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+        }
+
+        /* ===== SECTIONS ===== */
+
+        section {
+            padding: 110px 8%;
+        }
+
+        .section-title {
+            font-size: 45px;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: #8b5cf6;
+        }
+
+        /* ===== ABOUT ===== */
+
+        .about {
+            max-width: 900px;
+        }
+
+        .about p {
+            color: #aaa;
+            font-size: 19px;
+            line-height: 1.9;
+        }
+
+        /* ===== SKILLS ===== */
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+            gap: 20px;
+        }
+
+        .skill {
+            padding: 30px;
+            background: #0d0d0d;
+            border: 1px solid #222;
+            border-radius: 20px;
+            transition: 0.4s;
+        }
+
+        .skill:hover {
+            transform: translateY(-10px);
+            border-color: #8b5cf6;
+            box-shadow: 0 15px 40px rgba(139,92,246,0.15);
+        }
+
+        .skill h3 {
+            margin-bottom: 10px;
+        }
+
+        .skill p {
+            color: #777;
+        }
+
+        /* ===== PROJECTS ===== */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+            gap: 25px;
+        }
+
+        .project {
+            min-height: 280px;
+            padding: 30px;
+            border-radius: 25px;
+            background: linear-gradient(145deg,#111,#080808);
+            border: 1px solid #222;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project::before {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: #8b5cf6;
+            filter: blur(100px);
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+        .project:hover::before {
+            opacity: 0.3;
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+            border-color: #8b5cf6;
+        }
+
+        .project h3 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .project p {
+            color: #888;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        .project a {
+            display: inline-block;
+            margin-top: 25px;
+            color: #a78bfa;
+            text-decoration: none;
+            position: relative;
+        }
+
+        /* ===== CONTACT ===== */
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: clamp(40px,7vw,80px);
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        /* ===== FOOTER ===== */
+
+        footer {
+            padding: 30px;
+            text-align: center;
+            color: #555;
+            border-top: 1px solid #181818;
+        }
+
+        /* ===== MOBILE ===== */
+
+        @media(max-width:700px) {
+
+            nav {
+                padding: 18px 5%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            section {
+                padding: 80px 6%;
+            }
+
+            h1 {
+                letter-spacing: -3px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+
+        /* ===== REVEAL ANIMATION ===== */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: reveal 1s forwards;
+        }
+
+        @keyframes reveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+        <div class="logo">
+            SAI<span>.</span>
+        </div>
+
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content reveal">
+
+            <div class="hello">
+                Welcome to my world
+            </div>
+
+            <h1>
+                SAI<br>
+                <span>BHUVAN.</span>
+            </h1>
+
+            <p>
+                Developer • Creator • Dreamer
+                <br>
+                I build digital experiences, creative projects
+                and ideas that turn into reality.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#projects" class="btn primary">
+                    Explore My Work
+                </a>
+
+                <a href="#contact" class="btn secondary">
+                    Contact Me
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <h2 class="section-title">
+            About <span>Me.</span>
+        </h2>
+
+        <div class="about">
+
+            <p>
+                Hey, I'm Sai Bhuvan.
+                I'm passionate about technology, web development,
+                creativity and building something of my own.
+                I love turning simple ideas into meaningful digital
+                experiences.
+            </p>
+
+            <br>
+
+            <p>
+                Currently exploring programming, web development,
+                AI and creative projects while constantly learning
+                and improving myself.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+
+    <section id="skills">
+
+        <h2 class="section-title">
+            My <span>Skills.</span>
+        </h2>
+
+        <div class="skills">
+
+            <div class="skill">
+                <h3>HTML</h3>
+                <p>Web Structure</p>
+            </div>
+
+            <div class="skill">
+                <h3>CSS</h3>
+                <p>Modern UI Design</p>
+            </div>
+
+            <div class="skill">
+                <h3>Python</h3>
+                <p>Programming & Logic</p>
+            </div>
+
+            <div class="skill">
+                <h3>Java</h3>
+                <p>Programming</p>
+            </div>
+
+            <div class="skill">
+                <h3>Web Design</h3>
+                <p>Creative Interfaces</p>
+            </div>
+
+            <div class="skill">
+                <h3>Video Editing</h3>
+                <p>Creative Content</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section id="projects">
+
+        <h2 class="section-title">
+            Selected <span>Projects.</span>
+        </h2>
+
+        <div class="projects">
+
+            <div class="project">
+
+                <h3>DevPastries</h3>
+
+                <p>
+                    A modern e-commerce concept designed
+                    for showcasing and selling pastries online.
+                </p>
+
+                <a href="#">
+                    View Project →
+                </a>
+
+            </div>
+
+
+            <div class="project">
+
+                <h3>Amma Home Foods</h3>
+
+                <p>
+                    A digital platform concept for showcasing
+                    homemade food products and connecting
+                    customers with the brand.
+                </p>
+
+                <a href="#">
+                    View Project →
+                </a>
+
+            </div>
+
+
+            <div class="project">
+
+                <h3>Dream Mirror</h3>
+
+                <p>
+                    A creative emotional-support application
+                    concept designed around anonymous sharing
+                    and motivational responses.
+                </p>
+
+                <a href="#">
+                    View Project →
+                </a>
+
+            </div>
+
+
+            <div class="project">
+
+                <h3>Creative Works</h3>
+
+                <p>
+                    Posters, short-film concepts, music projects,
+                    social media designs and other creative work.
+                </p>
+
+                <a href="#">
+                    View Project →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact" class="contact">
+
+        <h2>
+            Let's build<br>
+            something <span>great.</span>
+        </h2>
+
+        <p>
+            Have an idea? Let's turn it into reality.
+        </p>
+
+        <div class="buttons">
+
+            <a
+                href="mailto:yourmail@gmail.com"
+                class="btn primary">
+                Email Me
+            </a>
+
+            <a
+                href="https://instagram.com/"
+                class="btn secondary">
+                Instagram
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 Sai Bhuvan. All Rights Reserved.
+
+    </footer>
+
+
+</body>
+</html>
